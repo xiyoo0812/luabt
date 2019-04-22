@@ -1,6 +1,6 @@
 local Node  = require "node"
 local Trace = require "trace"
-local Const = require("const")
+local Const = require "const"
 
 local M = {}
 
