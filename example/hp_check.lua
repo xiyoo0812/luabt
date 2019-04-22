@@ -3,8 +3,8 @@ local Luabt = require "source.luabt"
 local mt = {}
 mt.__index = mt
 
-function mt:run(tick)
-    if tick.robot.hp <= self.hp then
+function mt:run(bt)
+    if bt.robot.hp <= self.hp then
         return Luabt.SUCCESS
     else
         return Luabt.FAIL

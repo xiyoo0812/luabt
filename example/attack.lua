@@ -3,14 +3,14 @@ local Luabt = require "source.luabt"
 local mt = {}
 mt.__index = mt
 
-function mt:open(tick)
-    tick[self].tickNum = self.tickNum
+function mt:open(bt)
+    bt[self].tickNum = self.tickNum
     print(self.tickNum, "start attack...")
 end
 
-function mt:run(tick)
-    local N = tick[self].tickNum - 1
-    tick[self].tickNum = N
+function mt:run(bt)
+    local N = bt[self].tickNum - 1
+    bt[self].tickNum = N
     if N == 0 then
         print(N, "attack finish!")
         return Luabt.SUCCESS
@@ -20,7 +20,7 @@ function mt:run(tick)
     end
 end
 
-function mt:close(tick)
+function mt:close(bt)
     print("close attack")
 end
 
