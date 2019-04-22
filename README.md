@@ -34,16 +34,16 @@ close 的时候需要往黑板清除 is_open 状态。
 tick 是为 AI 分配的行为树运行实例。每一帧执行一次 tick 实例的 tick 函数。
 
 ```lua
-local Const = require "luabt.const"
+local Luabt = require "source.luabt"
 
 local mt = {}
 mt.__index = mt
 
--- return Const.SUCCESS, Const.FAIL, nil
+-- return Luabt.SUCCESS, Luabt.FAIL, nil
 function mt:open()
 end
 
--- return Const.SUCCESS, Const.FAIL, Const.RUNNING
+-- return Luabt.SUCCESS, Luabt.FAIL, Luabt.RUNNING
 function mt:run()
 end
 
