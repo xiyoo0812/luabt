@@ -1,6 +1,6 @@
 --failed.lua
-local FAIL          = luabt.BTConst.FAIL
-local RUNNING       = luabt.BTConst.RUNNING
+local FAIL          = luabt.FAIL
+local RUNNING       = luabt.RUNNING
 local node_execute  = luabt.node_execute
 
 local FailedNode = class()

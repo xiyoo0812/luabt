@@ -1,6 +1,6 @@
 --sequence.lua
 local ipairs        = ipairs
-local SUCCESS       = luabt.BTConst.SUCCESS
+local SUCCESS       = luabt.SUCCESS
 
 local node_execute  = luabt.node_execute
 

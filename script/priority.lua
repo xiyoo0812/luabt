@@ -1,8 +1,8 @@
 --priority.lua
 local ipairs        = ipairs
 
-local FAIL          = luabt.BTConst.FAIL
-local SUCCESS       = luabt.BTConst.SUCCESS
+local FAIL          = luabt.FAIL
+local SUCCESS       = luabt.SUCCESS
 
 local node_execute  = luabt.node_execute
 

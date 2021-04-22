@@ -2,9 +2,9 @@
 local ipairs        = ipairs
 local tinsert       = table.insert
 
-local FAIL          = luabt.BTConst.FAIL
-local RUNNING       = luabt.BTConst.RUNNING
-local SUCCESS       = luabt.BTConst.SUCCESS
+local FAIL          = luabt.FAIL
+local RUNNING       = luabt.RUNNING
+local SUCCESS       = luabt.SUCCESS
 
 local node_execute  = luabt.node_execute
 local node_reorder  = luabt.node_reorder

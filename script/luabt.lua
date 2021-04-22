@@ -3,23 +3,20 @@ local pairs     = pairs
 local mrandom   = math.random
 local tinsert   = table.insert
 
-luabt = luabt or {}
-
-luabt.BTConst = {
+luabt = {
     -- Node Status
-    SUCCESS = 1,
-    FAIL    = 2,
-    RUNNING = 3,
-
+    SUCCESS     = 1,
+    FAIL        = 2,
+    RUNNING     = 3,
     -- Parallel Policy
     SUCCESS_ONE = 1,    -- success when one child success
     SUCCESS_ALL = 2,    -- success when all children success
-    FAIL_ONE = 3,       -- fail when one child fail
-    FAIL_ALL = 4,       -- fail when all children fail
+    FAIL_ONE    = 3,    -- fail when one child fail
+    FAIL_ALL    = 4,    -- fail when all children fail
 }
 
-local SUCCESS       = luabt.BTConst.SUCCESS
-local RUNNING       = luabt.BTConst.RUNNING
+local SUCCESS   = luabt.SUCCESS
+local RUNNING   = luabt.RUNNING
 
 function luabt.node_execute(node, btree, level)
     local node_data = btree[node] or {}

@@ -1,18 +1,18 @@
 --parallel.lua
 local ipairs        = ipairs
-local FAIL          = luabt.BTConst.FAIL
-local SUCCESS       = luabt.BTConst.SUCCESS
-local RUNNING       = luabt.BTConst.RUNNING
-local FAIL_ONE      = luabt.BTConst.FAIL_ONE
-local FAIL_ALL      = luabt.BTConst.FAIL_ALL
-local SUCCESS_ALL   = luabt.BTConst.SUCCESS_ALL
-local SUCCESS_ONE   = luabt.BTConst.SUCCESS_ONE
+local FAIL          = luabt.FAIL
+local SUCCESS       = luabt.SUCCESS
+local RUNNING       = luabt.RUNNING
+local FAIL_ONE      = luabt.FAIL_ONE
+local FAIL_ALL      = luabt.FAIL_ALL
+local SUCCESS_ALL   = luabt.SUCCESS_ALL
+local SUCCESS_ONE   = luabt.SUCCESS_ONE
 
 local node_execute  = luabt.node_execute
 
 local ParallelNode = class()
---fail_policy == luabt.BTConst.FAIL_ALL or BTConst.FAIL_ONE
---success_policy == luabt.BTConst.SUCCESS_ALL or BTConst.SUCCESS_ONE
+--fail_policy == luabt.FAIL_ALL or Const.FAIL_ONE
+--success_policy == luabt.SUCCESS_ALL or Const.SUCCESS_ONE
 function ParallelNode:__init(fail_policy, success_policy, ...)
     self.name = "parallel"
     self.fail_policy = fail_policy

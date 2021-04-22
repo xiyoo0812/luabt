@@ -1,6 +1,6 @@
 --succeed.lua
-local RUNNING       = luabt.BTConst.RUNNING
-local SUCCESS       = luabt.BTConst.SUCCESS
+local RUNNING       = luabt.RUNNING
+local SUCCESS       = luabt.SUCCESS
 
 local node_execute  = luabt.node_execute
 

@@ -1,8 +1,8 @@
 --invert.lua
 
-local FAIL          = luabt.BTConst.FAIL
-local SUCCESS       = luabt.BTConst.SUCCESS
-local RUNNING       = luabt.BTConst.RUNNING
+local FAIL          = luabt.FAIL
+local SUCCESS       = luabt.SUCCESS
+local RUNNING       = luabt.RUNNING
 local node_execute  = luabt.node_execute
 
 local InvertNode = class()
