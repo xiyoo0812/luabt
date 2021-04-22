@@ -7,6 +7,10 @@
 * 简单，灵活，占用内存小。
 * 性能高，对比 [behaviourtree](https://github.com/tanema/behaviourtree.lua)，同样跑一个行为树，300 万次 tick，luabt 在不开启 log 的情况下耗时 13.599 秒。而 behaviourtree 耗时 18.141 秒。
 
+## 依赖
+* lua5.2以上
+* [luaoop](https://github.com/xiyoo0812/luaoop.git)
+
 ## 实现细节
 
 如果前后两次 tick 返回的 running 节点不一致，那么就存在前一个 running 节点没有关闭的可能性。这时候需要检查前面的那个节点是否仍然打开，如果是打开则手动关闭。
@@ -25,10 +29,10 @@ close 的时候需要往黑板清除 is_open 状态。
 每个节点有三个回调函数：
 
 * open(tick)
-    * return Const.SUCCESS, Const.FAIL, 不执行 run，提前返回
+    * return SUCCESS, FAIL, 不执行 run，提前返回
     * return nil, 继续执行 run
 * run(tick)
-    * return Const.RUNNING, Const.FAIL, Const.SUCCEED
+    * return RUNNING, FAIL, SUCCEED
 * close(tick)
 
 tick 是为 AI 分配的行为树运行实例。每一帧执行一次 tick 实例的 tick 函数。
@@ -36,30 +40,20 @@ tick 是为 AI 分配的行为树运行实例。每一帧执行一次 tick 实�
 ```lua
 local Luabt = require "source.luabt"
 
-local mt = {}
-mt.__index = mt
+local node = class()
 
 -- return Luabt.SUCCESS, Luabt.FAIL, nil
-function mt:open()
+function node:open()
 end
 
 -- return Luabt.SUCCESS, Luabt.FAIL, Luabt.RUNNING
-function mt:run()
+function node:run()
 end
 
-function mt:close()
+function node:close()
 end
 
-local function new(args)
-    local obj = {
-        name = "node_name",
-        args = args,
-    }
-    setmetatable(obj, mt)
-    return obj
-end
-
-return new
+return node
 ```
 
 ## TODO
@@ -68,11 +62,12 @@ return new
 
 另外一种实现方式参考 behaviour3js。方法是关闭上一次打开的而已经不在运行中的节点。要注意一种情况就是上一次的 running 正常结束的时候不要再次关闭。behaviour3js 就有这个问题。
 
-经过与 sgpl 以及 zyg 同学讨论，被打断以后继续执行之前子节点的行为比较难以理解。
+被打断以后继续执行之前子节点的行为比较难以理解。
 而且在一个追击的场景下，被高优先级打断，追击节点 close 的时候会将目标置空，回来的时候如果不做检查就出问题了。当然节点是应该做检查，但是如果是从头执行也不会出现这样的问题。所以最终的决定是还是关闭中间节点。
 
 ## Example
 
 ```
-lua example/test.lua
+lua example/test_paralle.lua
+lua example/test_priority.lua
 ```

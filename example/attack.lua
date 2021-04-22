@@ -1,37 +1,34 @@
-local Luabt = require "source.luabt"
+--attack.lua
 
-local mt = {}
-mt.__index = mt
+local SUCCESS = luabt.SUCCESS
+local RUNNING = luabt.RUNNING
 
-function mt:open(bt)
-    bt[self].tickNum = self.tickNum
-    print(self.tickNum, "start attack...")
+local Attack = class()
+function Attack:__init(tick_num)
+    self.name = "attack"
+    self.tick_num = tick_num
 end
 
-function mt:run(bt)
-    local N = bt[self].tickNum - 1
-    bt[self].tickNum = N
-    if N == 0 then
-        print(N, "attack finish!")
-        return Luabt.SUCCESS
-    else
-        print(N, "attacking.....")
-        return Luabt.RUNNING
+function Attack:open(tree)
+    if self.tick_num <= 0 then
+        return SUCCESS
     end
+    print(self.tick_num, "start attack...")
 end
 
-function mt:close(bt)
+function Attack:run(tree)
+    self.tick_num = tick_num - 1
+    tree.robot.hp = tree.robot.hp - 1;
+    print(tree.robot.hp, "attacking.....")
+    if self.tick_num <= 0 then
+        print(tree.robot.hp, "attack finish!")
+        return SUCCESS
+    end
+    return RUNNING
+end
+
+function Attack:close(tree)
     print("close attack")
 end
 
-
-local function new(tickNum)
-    local obj = {
-        name = "attack",
-        tickNum = tickNum
-    }
-    setmetatable(obj, mt)
-    return obj
-end
-
-return new
+return Attack

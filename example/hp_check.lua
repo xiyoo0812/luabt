@@ -1,23 +1,20 @@
-local Luabt = require "script.include"
+--hp_check.lua
 
-local mt = {}
-mt.__index = mt
+local SUCCESS = luabt.SUCCESS
+local RUNNING = luabt.RUNNING
 
-function mt:run(bt)
-    if bt.robot.hp <= self.hp then
-        return Luabt.SUCCESS
+local HpCheck = class()
+function HpCheck:__init(hp)
+    self.name = "hp_check"
+    self.hp = hp
+end
+
+function HpCheck:run(tree)
+    if tree.robot.hp <= self.hp then
+        return SUCCESS
     else
-        return Luabt.FAIL
+        return FAIL
     end
 end
 
-local function new(hp)
-    local obj = {
-        name = "hp_check",
-        hp = hp,
-    }
-    setmetatable(obj, mt)
-    return obj
-end
-
-return new
+return HpCheck

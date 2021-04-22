@@ -1,10 +1,12 @@
-local Luabt     = require "script.include"
+--test_priority.lua
+
+local LuaBT     = require "script.include"
 local Flee      = require "example.flee"
 local Attack    = require "example.attack"
 local HpCheck   = require "example.hp_check"
 
-local Priority  = Luabt.Priority
-local Sequence  = Luabt.Sequence
+local Priority  = require "script.priority"
+local Sequence  = require "script.sequence"
 
 local robot = {id = 1, hp = 100}
 
@@ -16,9 +18,7 @@ local root = Priority(
     Attack(20)
 )
 
-local bt = Luabt.new(robot, root)
-
--- print = function() end
+local bt = LuaBT(robot, root)
 for i = 1, 30 do
     print("================", i)
     if i == 10 then

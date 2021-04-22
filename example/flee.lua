@@ -1,36 +1,34 @@
-local Luabt = require "script.include"
+--flee.lua
 
-local mt = {}
-mt.__index = mt
+local SUCCESS = luabt.SUCCESS
+local RUNNING = luabt.RUNNING
 
-function mt:open(bt)
-    bt[self].tickNum = self.tickNum
-    print(self.tickNum, "start flee....")
+local Flee = class()
+function Flee:__init(tick_num)
+    self.name = "flee"
+    self.tick_num = tick_num
 end
 
-function mt:run(bt)
-    local N = bt[self].tickNum - 1
-    bt[self].tickNum = N
-    if N == 0 then
-        print(N, "finish flee")
-        return Luabt.SUCCESS
-    else
-        print(N, "fleeing.......")
-        return Luabt.RUNNING
+function Flee:open(tree)
+    if self.tick_num <= 0 then
+        return SUCCESS
     end
+    print(self.tick_num, "start flee....")
 end
 
-function mt:close(bt)
+function Flee:run(tree)
+    self.tick_num = self.tick_num - 1
+    tree.robot.hp = tree.robot.hp + 2;
+    print(tree.robot.hp, "fleeing.......")
+    if self.tick_num <= 0 then
+        print(tree.robot.hp, "finish flee")
+        return SUCCESS
+    end
+    return RUNNING
+end
+
+function Flee:close(tree)
     print("close flee")
 end
 
-local function new(tickNum)
-    local obj = {
-        name = "flee",
-        tickNum = tickNum,
-    }
-    setmetatable(obj, mt)
-    return obj
-end
-
-return new
+return Flee

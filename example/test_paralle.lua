@@ -1,16 +1,18 @@
-local Luabt     = require "source.luabt"
+--test_paralle.lua
+
+local LuaBT     = require "script.include"
 local Flee      = require "example.flee"
 local Attack    = require "example.attack"
 local HpCheck   = require "example.hp_check"
 
-local Parallel  = Luabt.Parallel
-local Sequence  = Luabt.Sequence
+local Parallel  = require "script.parallel"
+local Sequence  = require "script.sequence"
 
 local robot = {id = 1, hp = 100}
 
 local root = Parallel(
-    Luabt.FAIL_ONE,
-    Luabt.SUCCESS_ALL,
+    luabt.FAIL_ONE,
+    luabt.SUCCESS_ALL,
     Sequence(
         HpCheck(50),
         Flee(5)
@@ -19,7 +21,7 @@ local root = Parallel(
 )
 
 -- print(inspect(root))
-local bt = Luabt.new(robot, root)
+local bt = LuaBT(robot, root)
 -- print(inspect(Tick))
 for i = 1, 30 do
     print("================", i)

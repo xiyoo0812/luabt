@@ -18,6 +18,10 @@ luabt = {
 local SUCCESS   = luabt.SUCCESS
 local RUNNING   = luabt.RUNNING
 
+function luabt.create_node(btcls_node, ...)
+    return btcls_node(...)
+end
+
 function luabt.node_execute(node, btree, level)
     local node_data = btree[node] or {}
     node_data.__level = level
@@ -30,6 +34,7 @@ function luabt.node_execute(node, btree, level)
             local ret = node:open(btree, node_data)
             if ret then
                 btree:node_status(node, ret)
+                node_data.is_open = false
                 return ret
             end
         end
