@@ -1,4 +1,4 @@
-local Luabt = require "source.luabt"
+local Luabt = require "script.include"
 
 local mt = {}
 mt.__index = mt

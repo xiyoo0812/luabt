@@ -1,4 +1,4 @@
-local Luabt     = require "source.luabt"
+local Luabt     = require "script.include"
 local Flee      = require "example.flee"
 local Attack    = require "example.attack"
 local HpCheck   = require "example.hp_check"
