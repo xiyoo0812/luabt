@@ -1,6 +1,6 @@
 --test_paralle.lua
 
-local LuaBT     = require "script.include"
+local LuaBT     = require "example.luaoop"
 local Flee      = require "example.flee"
 local Attack    = require "example.attack"
 local HpCheck   = require "example.hp_check"

@@ -17,7 +17,7 @@ function Attack:open(tree)
 end
 
 function Attack:run(tree)
-    self.tick_num = tick_num - 1
+    self.tick_num = self.tick_num - 1
     tree.robot.hp = tree.robot.hp - 1;
     print(tree.robot.hp, "attacking.....")
     if self.tick_num <= 0 then

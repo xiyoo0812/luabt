@@ -8,7 +8,7 @@
 * 性能高，对比 [behaviourtree](https://github.com/tanema/behaviourtree.lua)，同样跑一个行为树，300 万次 tick，luabt 在不开启 log 的情况下耗时 13.599 秒。而 behaviourtree 耗时 18.141 秒。
 
 ## 依赖
-* lua5.2以上
+* [lua](https://github.com/xiyoo0812/lua.git)5.2以上
 * [luaoop](https://github.com/xiyoo0812/luaoop.git)
 
 ## 实现细节
