@@ -76,7 +76,7 @@ function luabt.node_reorder(indexes, weight, total)
 end
 
 local LuaBT = class()
-prop = property(LuaBT)
+local prop = property(LuaBT)
 prop:reader("frame", 0)
 prop:reader("root", nil)
 prop:reader("robot", nil)

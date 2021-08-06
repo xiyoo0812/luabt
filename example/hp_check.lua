@@ -1,7 +1,7 @@
 --hp_check.lua
 
-local SUCCESS = luabt.SUCCESS
-local RUNNING = luabt.RUNNING
+local FAIL      = luabt.FAIL
+local SUCCESS   = luabt.SUCCESS
 
 local HpCheck = class()
 function HpCheck:__init(hp)
