@@ -66,7 +66,7 @@ return node
 而且在一个追击的场景下，被高优先级打断，追击节点 close 的时候会将目标置空，回来的时候如果不做检查就出问题了。当然节点是应该做检查，但是如果是从头执行也不会出现这样的问题。所以最终的决定是还是关闭中间节点。
 
 ## Example
-
+备注: 需要先下载luaoop
 ```
 lua example/test_paralle.lua
 lua example/test_priority.lua
