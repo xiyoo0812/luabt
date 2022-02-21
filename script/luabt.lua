@@ -1,7 +1,6 @@
 --luabt.lua
 local pairs     = pairs
 local mrandom   = math.random
-local tinsert   = table.insert
 
 luabt = {
     -- Node Status
@@ -134,7 +133,7 @@ function LuaBT:node_trace(bt, level, node)
         node = node,
         level = level,
     }
-    tinsert(self.stack, node_info)
+    self.stack[#self.stack + 1] = node_info
     self.nodes[node] = node_info
 end
 

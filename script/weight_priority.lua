@@ -1,6 +1,5 @@
 --weight_priority.lua
 local ipairs        = ipairs
-local tinsert       = table.insert
 
 local FAIL          = luabt.FAIL
 local RUNNING       = luabt.RUNNING
@@ -26,7 +25,7 @@ function WPriorityNode:open(_, node_data)
     if not node_data.indexes then
         local indexes = {}
         for i = 1, #self.children do
-            tinsert(indexes, i)
+            indexes[#indexes + 1] = i
         end
         node_data.indexes = indexes
     end
