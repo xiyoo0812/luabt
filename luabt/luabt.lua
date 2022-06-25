@@ -30,6 +30,7 @@ luabt.Condition = require("luabt.condition")
 
 local WAITING   = luabt.WAITING
 local RUNNING   = luabt.RUNNING
+local SUCCESS   = luabt.SUCCESS
 
 local LuaBT = class()
 local prop = property(LuaBT)
@@ -69,9 +70,11 @@ function LuaBT:tick()
             self:pop(node)
         end
     end
+    local succes = (self.status == SUCCESS)
     if self.status ~= RUNNING then
         self:reset()
     end
+    return succes
 end
 
 --压入节点
